@@ -1,6 +1,7 @@
 package banking_app.controller;
 
 import banking_app.dto.AccountDto;
+import banking_app.dto.TransferFundDto;
 import banking_app.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,5 +63,10 @@ public class AccountController {
         accountService.delete(id);
         return ResponseEntity.ok("Account Deleted Successfully!");
 
+    }
+    @PostMapping("/transfer")
+    public ResponseEntity<String> transferFund(@RequestBody TransferFundDto transferFundDto){
+        accountService.transferFund(transferFundDto);
+        return ResponseEntity.ok("Transfer has been Completed ");
     }
 }
